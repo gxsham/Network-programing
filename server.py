@@ -10,7 +10,6 @@ listeningSocket.bind( (HOST, PORT) )
 print "bind = OK"
 #make it listen
 listeningSocket.listen(5) 
-    
 def client_thread(newAllocatedSocket):   
     while newAllocatedSocket:
         try:
@@ -18,7 +17,6 @@ def client_thread(newAllocatedSocket):
             sys.stdout.write(data)
         except:
             return
-        
         if data == "hastalavista\n":
             newAllocatedSocket.close()
             listeningSocket.close()
@@ -42,9 +40,7 @@ def client_thread(newAllocatedSocket):
                 newAllocatedSocket.send('42\n')
             else:
                 newAllocatedSocket.send("Can you elaborate on that?\n")
-        
 while 1:
-    
     newAllocatedSocket, address = listeningSocket.accept()   
     start_new_thread(client_thread,(newAllocatedSocket,))
     print address, newAllocatedSocket
